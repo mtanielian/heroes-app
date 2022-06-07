@@ -2,7 +2,7 @@ import { Card, CardActionArea, CardActions, CardContent, CardMedia, Grid, Typogr
 import { Link } from "react-router-dom"
 
 const HeroesListItem = ({ heroe, showMore = true }) => {
-  const { id, superhero, publisher, alter_ego, first_appearance, characters } = heroe
+  const { id, superhero, alter_ego, characters } = heroe
   return (
     <Grid item xs={3}>
       <Card sx={{ maxWidth: 345 }}>

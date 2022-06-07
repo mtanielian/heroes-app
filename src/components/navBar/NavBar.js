@@ -1,10 +1,18 @@
 import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
+import { useContext } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { actionsTypes } from '../../actionsTypes/types'
+import { AuthContext } from '../../context/AuthContext'
 import './navbar.css'
 
 const NavBar = () => {
     const navigate = useNavigate()
+    const { dispatch, username } = useContext(AuthContext)
     const handlerLogout = () => {
+        dispatch({
+            type: actionsTypes.logout
+        })
+        localStorage.clear()
         navigate('/login', {
             replace: true
         })
@@ -40,6 +48,7 @@ const NavBar = () => {
                     </NavLink>
                 </Box>
                 <Box flex={ 1 } />
+                {username && <Typography variant='h6' marginRight={5}>{username}</Typography>}
                 <Button sx={{color: 'white'}} onClick={handlerLogout}>
                     Logout
                 </Button>

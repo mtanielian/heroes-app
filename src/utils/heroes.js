@@ -7,3 +7,9 @@ export const getHeroesByPublisher = ( publisher ) => {
 export const getHeroeById = (id) => {
   return heroes.find(h => h.id === id)
 }
+
+export const searchHeroe = ( query = '' ) => {
+  query = query.toLowerCase();
+  return heroes.filter(hero => hero.superhero.toLowerCase().includes(query));
+
+}
